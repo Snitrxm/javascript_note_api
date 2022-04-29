@@ -27,12 +27,11 @@ userSchema.pre('save', function(next){
 // Compare password
 userSchema.methods.isCorrectPassword = function(password, callback){
     let p = this.password;
-    bcrypt.compare(password, p, function(err, same){
-        if(err){
-            callback(err);
-        } else{
-            callback(err, same)
-        }
+    bcrypt.compare(password, p, function(err, same) {
+        if(err)
+            console.log(err);
+        else
+            callback(err, same);
     })
 }
 
